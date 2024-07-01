@@ -1,14 +1,18 @@
 var host = window.location.origin;
 
+//Fetch data from Supabase database
 function loadSupabase() {
     return fetch(`${host}/data`)
     .then((res) => res.json())
 }
 
+//Load Supabase data into HTML table
 async function displayData() {
+    //Call fetch function
     const supabase = await loadSupabase();
     const htmlTable = document.getElementById("example");
 
+    //Create table headers
     thead = document.createElement("thead")
     tr = document.createElement("tr");
     ed = document.createElement("th");
@@ -29,6 +33,7 @@ async function displayData() {
     work = document.createElement("th");
     business = document.createElement("th");
 
+    //Assign values to table headers
     ed.innerHTML = "ED";
     house_num.innerHTML = "House #"
     building_num.innerHTML = "Building #"
@@ -47,6 +52,7 @@ async function displayData() {
     work.innerHTML = "Work"
     business.innerHTML = "Business"
 
+    //Append headers to table
     tr.appendChild(ed);
     tr.appendChild(house_num);
     tr.appendChild(building_num);
@@ -70,6 +76,7 @@ async function displayData() {
 
     tbody = document.createElement("tbody")
 
+    //Populate table with data from Supabase
     supabase.forEach((row) => {
         tr = document.createElement("tr");
         ed = document.createElement("td");
@@ -190,7 +197,16 @@ async function displayData() {
       tfoot.appendChild(tr)
       htmlTable.appendChild(tfoot);
 
+      //Initialize Datatables plugin- see Datatables documentation for more info
       new DataTable('#example', {
+        //add column visibility
+        layout: {
+            topStart: {
+                buttons: ['colvis']
+            }
+        },
+
+        //add multi column search 
         initComplete: function () {
             this.api()
                 .columns()
