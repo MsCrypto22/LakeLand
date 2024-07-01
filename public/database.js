@@ -7,9 +7,9 @@ function loadSupabase() {
 
 async function displayData() {
     const supabase = await loadSupabase();
-    console.log(supabase);
-    const htmlTable = document.getElementById("dataTable");
+    const htmlTable = document.getElementById("example");
 
+    thead = document.createElement("thead")
     tr = document.createElement("tr");
     ed = document.createElement("th");
     house_num = document.createElement("th");
@@ -30,22 +30,22 @@ async function displayData() {
     business = document.createElement("th");
 
     ed.innerHTML = "ED";
-    house_num.innerHTML = "House Number"
-    building_num.innerHTML = "Building Number"
-    street_name.innerHTML = "Street Number"
+    house_num.innerHTML = "House #"
+    building_num.innerHTML = "Building #"
+    street_name.innerHTML = "Street #"
     firstName.innerHTML = "First Name";
     lastName.innerHTML = "Last Name";
-    relation.innerHTML = "Relation to Head of House"
-    head_last.innerHTML = "Head of House Last Name"
-    head_first.innerHTML = "Head of House FIrst Name"
+    relation.innerHTML = "Relation to HoH"
+    head_last.innerHTML = "HoH Last Name"
+    head_first.innerHTML = "HoH First Name"
     sex.innerHTML = "Sex"
     race.innerHTML = "Race"
     marital.innerHTML = "Marital Status"
-    age.innerHTML = "Age at Time of Census"
-    place_birth.innerHTML = "Age at Time of Census"
+    age.innerHTML = "Age"
+    place_birth.innerHTML = "Place of Birth"
     birth_year.innerHTML = "Birth Year"
-    work.innerHTML = "Kind of Work"
-    business.innerHTML = "Kind of Business"
+    work.innerHTML = "Work"
+    business.innerHTML = "Business"
 
     tr.appendChild(ed);
     tr.appendChild(house_num);
@@ -65,7 +65,10 @@ async function displayData() {
     tr.appendChild(work);
     tr.appendChild(business);
 
-    htmlTable.appendChild(tr);
+    thead.appendChild(tr)
+    htmlTable.appendChild(thead);
+
+    tbody = document.createElement("tbody")
 
     supabase.forEach((row) => {
         tr = document.createElement("tr");
@@ -122,11 +125,93 @@ async function displayData() {
         tr.appendChild(birth_year);
         tr.appendChild(work);
         tr.appendChild(business);
-    
-        htmlTable.appendChild(tr);
+
+        tbody.appendChild(tr);
+        htmlTable.appendChild(tbody);
       })
 
 
+      tfoot = document.createElement("tfoot");
+      tr = document.createElement("tr");
+      ed = document.createElement("th");
+      house_num = document.createElement("th");
+      building_num = document.createElement("th");
+      street_name = document.createElement("th");
+      firstName = document.createElement("th");
+      lastName = document.createElement("th");
+      relation = document.createElement("th");
+      head_last = document.createElement("th");
+      head_first = document.createElement("th");
+      sex = document.createElement("th");
+      race = document.createElement("th");
+      marital = document.createElement("th");
+      age = document.createElement("th");
+      place_birth = document.createElement("th");
+      birth_year = document.createElement("th");
+      work = document.createElement("th");
+      business = document.createElement("th");
+  
+      ed.innerHTML = "ED";
+      house_num.innerHTML = "House #"
+      building_num.innerHTML = "Building #"
+      street_name.innerHTML = "Street #"
+      firstName.innerHTML = "First Name";
+      lastName.innerHTML = "Last Name";
+      relation.innerHTML = "Relation to HoH"
+      head_last.innerHTML = "HoH Last Name"
+      head_first.innerHTML = "HoH First Name"
+      sex.innerHTML = "Sex"
+      race.innerHTML = "Race"
+      marital.innerHTML = "Marital Status"
+      age.innerHTML = "Age"
+      place_birth.innerHTML = "Place of Birth"
+      birth_year.innerHTML = "Birth Year"
+      work.innerHTML = "Work"
+      business.innerHTML = "Business"
+  
+      tr.appendChild(ed);
+      tr.appendChild(house_num);
+      tr.appendChild(building_num);
+      tr.appendChild(street_name);
+      tr.appendChild(firstName);
+      tr.appendChild(lastName);
+      tr.appendChild(relation);
+      tr.appendChild(head_last);
+      tr.appendChild(head_first);
+      tr.appendChild(sex);
+      tr.appendChild(race);
+      tr.appendChild(marital);
+      tr.appendChild(age);
+      tr.appendChild(place_birth);
+      tr.appendChild(birth_year);
+      tr.appendChild(work);
+      tr.appendChild(business);
+  
+      tfoot.appendChild(tr)
+      htmlTable.appendChild(tfoot);
+
+      new DataTable('#example', {
+        initComplete: function () {
+            this.api()
+                .columns()
+                .every(function () {
+                    let column = this;
+                    let title = column.footer().textContent;
+     
+                    // Create input element
+                    let input = document.createElement('input');
+                    input.placeholder = title;
+                    column.footer().replaceChildren(input);
+     
+                    // Event listener for user input
+                    input.addEventListener('keyup', () => {
+                        if (column.search() !== this.value) {
+                            column.search(input.value).draw();
+                        }
+                    });
+                });
+        }
+    });
 }
 
 window.onload = displayData();
