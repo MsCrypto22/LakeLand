@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lakeland Database</title>
+
+    <!-- Javascript File -->
+    <script src="database.js" defer></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="style.css" />
+
+    <!--Datatables-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script
+      src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"
+      defer
+    ></script>
+
+    <!--Datatables Extensions-->
+    <link
+      href="https://cdn.datatables.net/v/dt/dt-2.0.8/b-3.0.2/b-colvis-3.0.2/r-3.0.2/datatables.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.datatables.net/v/dt/dt-2.0.8/b-3.0.2/b-colvis-3.0.2/r-3.0.2/datatables.min.js"
+      defer
+    ></script>
+  </head>
+
+  <body>
+    <h1>Lakeland Database Demo</h1>
+
+    <!--Lakeland Database-->
+    <table id="example" class="display" style="width: 100%"></table>
+  </body>
+
+  <button id="filter_data" onclick="filterData()">Filter Data</button>
+
+  <a href="home.html">
+    <button class="button-18" role="button">Go Back to Home Page</button>
+  </a>
+</html>
