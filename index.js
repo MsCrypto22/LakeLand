@@ -93,6 +93,66 @@ app.post('/data', async (req, res) => {
     }
 })
 
+const fetchData = async (filters) => {
+    let query = supabase.from('INST490_Demo').select('*')
+  
+    // Dynamically add filters to the query
+    Object.keys(filters).forEach(field => {
+      if (filters[field]) {
+        query = query.eq(field, filters[field])
+      }
+    })
+  
+    // Execute the query
+    const { data, error } = await query
+  
+    if (error) {
+      console.error('Error fetching data:', error)
+      return null
+    }
+  
+    return data
+  }
+
+app.post('/query', async (req, res) => {
+    const filters = req.body
+  
+    try {
+      const data = await fetchData(filters)
+      res.status(200).json(data)
+    } catch (error) {
+      res.status(500).json({ error: error.message })
+    }
+  })
+
+/* app.post('/filter', async (req, res) => {
+    console.log('Attempting to GET filtered data')
+    test = {
+        "name": "John", 
+        "age": 30, 
+        "city": "New York"
+    }
+    test1 = JSON.stringify(test)
+    console.log(test1)
+
+    const { data, error } = await supabase
+        .from('INST490_Demo')
+        .select()
+        .match({filters})
+        
+
+    if (error) {
+        console.log("Error")
+        res.send(error)
+    } else {
+        res.send(data)
+    }
+
+    console.log('Data:', data)
+    console.log('Error:', error)
+
+})
+ */
 app.listen(port, () => {
     console.log('App is alive!')
 })
