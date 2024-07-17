@@ -4,7 +4,7 @@ tfoot input {
 }
 
 body {
-  background-color: rgb(185, 211, 232);
+  background-color: rgb(155, 201, 239);
 }
 
 #heading {
@@ -101,3 +101,5 @@ select {
   background: rgba(0, 0, 0, 0.08);
   color: rgba(0, 0, 0, 0.3);
 }
+
+

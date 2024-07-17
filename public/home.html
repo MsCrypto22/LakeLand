@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1 id="heading">Welcome to the Lakeland Genealogy Portal</h1>
 
-    <!--Button container-->
-    <div id="button-container">
-      <!--Query button-->
-      <button class="button-18" role="button" onclick="toggleQuery()">
-        Open Query
-      </button>
-      <!--Navigate to full Database button-->
-      <a href="sheets.html">
-        <button class="button-18" role="button">Go to Full Database</button>
-      </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="homepage.js" defer></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 id="heading">Welcome to the Lakeland Genealogy Portal</h1>
+
+  <!--Button container-->
+  <div id="button-container">
+    <!--Query button-->
+    <button class="button-18" role="button" onclick="toggleQuery()">
+      Open Query
+    </button>
+    <!--Navigate to full Database button-->
+    <a href="sheets.html">
+      <button class="button-18" role="button">Go to Full Database</button>
+    </a>
+  </div>
+
+  <table id="run-query-table" class="table table-striped" style="width: 100%"></table>
+
+  <!--Query Section-->
+
+  <form id="query-container" onsubmit="filterData(); return false;" class="card">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" class="form-control" name="firstName" id="firstName" />
     </div>
 
-    <!--Query Section-->
-    <form id="query-container" action="">
-      <h2 id="query-heading">Query Database</h2>
-      <label for="firstName">First Name:</label>
-      <input type="text" name="firstName" id=""/>
-      <br />
+    <div class="form-group">
       <label for="lastName">Last Name:</label>
-      <input type="text" name="lastName" id="" />
-      <br />
-      <bel for="headOfHouse"> Head of House Last Name:</label>
-      <input type="text" name="headOfHouse" id="" />
-      <br />
-      <label for="age">Select Your Age:</label>
-      <select name="age" id="age">
-        <option value="" disabled selected>Select your age</option>
+      <input type="text" class="form-control" name="lastName" id="lastName" />
+    </div>
+
+    <div class="form-group">
+      <label for="headOfHouse"> Head of House Last Name:</label>
+      <input type="text" class="form-control" name="headOfHouse" id="headOfHouse" />
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <select name="age" id="age" class="form-control">
+        <option value="" disabled selected>Age</option>
       </select>
       <script>
 
@@ -53,48 +67,36 @@
           selectElement.appendChild(option);
         }
       </script>
-      <br />
-      <label for="year">Census Year:</label>
-      <select id="year" name="year">
-        <option value="" disabled selected>Select a year</option>
-      </select>
-      <script>
-        // Get current year
-        var currentYear = new Date().getFullYear();
-        // Set range of past years 
-        var startYear = currentYear - 100;
-        // Populate the select element with options
-        var selectElement = document.getElementById("year");
-        // Add options for past years up to current year
-        for (var year = currentYear; year >= startYear; year--) {
-          var option = document.createElement("option");
-          option.value = year;
-          option.textContent = year;
-          selectElement.appendChild(option);
-        }
-      </script>
-      <br />
+    </div>
+
+    <div class="form-group">
       <label for="houseNumber">House Number:</label>
-      <input type="text" name="houseNumber" id="" />
-      <br />
+      <input type="text" class="form-control" name="houseNumber" id="houseNumber" />
+    </div>
+
+    <div class="form-group">
       <label for="buildingNumber">Building Number:</label>
-      <input type="text" name="buildingNumber" id="" />
-      <br />
+      <input type="text" class="form-control" name="buildingNumber" id="buildingNumber" />
+    </div>
+    
+    <div class="form-group">
       <label for="streetName">Street Name:</label>
-      <input type="text" name="streetName" id="" />
-      <br />
+      <input type="text" class="form-control" name="streetName" id="streetName" />
+    </div>
+
+    <!-- <div class="form-group">
       <label for="state">Select a State:</label>
-      <select name="state" id="">
+      <select name="state" class="form-control" id="state">
         <option value="" disabled selected>Select a state</option>
-        <option value="AL">AL - Alabama</option>
-        <option value="AK">AK - Alaska</option>
-        <option value="AZ">AZ - Arizona</option>
-        <option value="AR">AR - Arkansas</option>
-        <option value="CA">CA - California</option>
-        <option value="CO">CO - Colorado</option>
-        <option value="CT">CT - Connecticut</option>
-        <option value="DE">DE - Delaware</option>
-        <option value="FL">FL - Florida</option>
+        <option value="Alabama">AL - Alabama</option>
+        <option value="Alaska">AK - Alaska</option>
+        <option value="Arizona">AZ - Arizona</option>
+        <option value="Arkansas">AR - Arkansas</option>
+        <option value="California">CA - California</option>
+        <option value="Colorado">CO - Colorado</option>
+        <option value="Connecticut">CT - Connecticut</option>
+        <option value="Delaware">DE - Delaware</option>
+        <option value="Florida">FL - Florida</option>
         <option value="GA">GA - Georgia</option>
         <option value="HI">HI - Hawaii</option>
         <option value="ID">ID - Idaho</option>
@@ -105,7 +107,7 @@
         <option value="KY">KY - Kentucky</option>
         <option value="LA">LA - Louisiana</option>
         <option value="ME">ME - Maine</option>
-        <option value="MD">MD - Maryland</option>
+        <option value="Maryland">MD - Maryland</option>
         <option value="MA">MA - Massachusetts</option>
         <option value="MI">MI - Michigan</option>
         <option value="MN">MN - Minnesota</option>
@@ -118,7 +120,7 @@
         <option value="NJ">NJ - New Jersey</option>
         <option value="NM">NM - New Mexico</option>
         <option value="NY">NY - New York</option>
-        <option value="NC">NC - North Carolina</option>
+        <option value="North Carolina">NC - North Carolina</option>
         <option value="ND">ND - North Dakota</option>
         <option value="OH">OH - Ohio</option>
         <option value="OK">OK - Oklahoma</option>
@@ -137,8 +139,43 @@
         <option value="WI">WI - Wisconsin</option>
         <option value="WY">WY - Wyoming</option>
       </select>
-    </form>
+    </div> -->
 
-    <script src="home.js"></script>
-  </body>
+    <div class="form-group">
+      <input type="submit" class="form-control">
+    </div>
+    
+   
+      
+      <!-- <br />
+      <label for="year">Census Year:</label>
+      <select id="year" name="year">
+        <option value="" disabled selected>Select a year</option>
+      </select>
+      <script>
+        // Get current year
+        var currentYear = new Date().getFullYear();
+        // Set range of past years 
+        var startYear = currentYear - 100;
+        // Populate the select element with options
+        var selectElement = document.getElementById("year");
+        // Add options for past years up to current year
+        for (var year = currentYear; year >= startYear; year--) {
+          var option = document.createElement("option");
+          option.value = year;
+          option.textContent = year;
+          selectElement.appendChild(option);
+        }
+      </script> -->
+  
+      
+
+   
+    
+      
+      
+     
+  </form>
+</body>
+
 </html>

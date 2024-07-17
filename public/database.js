@@ -230,30 +230,7 @@ async function displayData() {
     });
 }
 
-function filterData() {
 
-    const filters = {
-        last_name: 'Tolson',
-        place_birth: 'Maryland'
-        // add more fields as needed
-      }
-
-    fetch(`${host}/query`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(filters)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Filtered Data:', data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
-
-
+  
 
 window.onload = displayData();
