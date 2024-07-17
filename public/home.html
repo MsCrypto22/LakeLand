@@ -1,92 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="homepage.js" defer></script>
+    <title>Home Page</title>
+  </head>
 
-  <script src="homepage.js" defer></script>
-  <title>Home Page</title>
-</head>
-
-<body>
-  <div class="container text-center">
-    <h1 id="heading" class="display-3">Welcome to the Lakeland Genealogy Portal</h1>
-  </div>
-
-  <!--Button container-->
-  <div id="button-container">
-    <!--Query button-->
-    <button class="button-18" role="button" onclick="toggleQuery()">
-      Open Query
-    </button>
-    <!--Navigate to full Database button-->
-    <a href="sheets.html">
-      <button class="button-18" role="button">Go to Full Database</button>
-    </a>
-  </div>
-
-  <table id="run-query-table" class="table table-striped" style="width: 100%"></table>
-
-  <!--Query Section-->
-
-  <form id="query-container" onsubmit="filterData(); return false;" class="card">
-    <div class="form-group">
-      <label for="firstName">First Name:</label>
-      <input type="text" class="form-control" name="firstName" id="firstName" />
+  <body>
+    <div class="container text-center">
+      <h1 id="heading" class="display-3">
+        Welcome to the Lakeland Genealogy Portal
+      </h1>
     </div>
 
-    <div class="form-group">
-      <label for="lastName">Last Name:</label>
-      <input type="text" class="form-control" name="lastName" id="lastName" />
+    <!--Button container-->
+    <div id="button-container">
+      <!--Query button-->
+      <button class="button-18" role="button" onclick="toggleQuery()">
+        Open Query
+      </button>
+      <!--Navigate to full Database button-->
+      <a href="sheets.html">
+        <button class="button-18" role="button">Go to Full Database</button>
+      </a>
     </div>
 
-    <div class="form-group">
-      <label for="headOfHouse"> Head of House Last Name:</label>
-      <input type="text" class="form-control" name="headOfHouse" id="headOfHouse" />
-    </div>
+    <table
+      id="run-query-table"
+      class="table table-striped"
+      style="width: 100%"
+    ></table>
 
-    <div class="form-group">
-      <label for="age">Age:</label>
-      <select name="age" id="age" class="form-control">
-        <option value="" disabled selected>Age</option>
-      </select>
-      <script>
+    <!--Query Section-->
 
-        var startAge = 18;
-        var endAge = 100;
+    <form
+      id="query-container"
+      onsubmit="filterData(); return false;"
+      class="card"
+    >
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstName"
+          id="firstName"
+        />
+      </div>
 
-        // Populate the select element with options
-        var selectElement = document.getElementById("age");
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" name="lastName" id="lastName" />
+      </div>
 
-        // Add options for ages
-        for (var age = startAge; age <= endAge; age++) {
-          var option = document.createElement("option");
-          option.value = age;
-          option.textContent = age;
-          selectElement.appendChild(option);
-        }
-      </script>
-    </div>
+      <div class="form-group">
+        <label for="headOfHouse"> Head of House Last Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="headOfHouse"
+          id="headOfHouse"
+        />
+      </div>
 
-    <div class="form-group">
-      <label for="houseNumber">House Number:</label>
-      <input type="text" class="form-control" name="houseNumber" id="houseNumber" />
-    </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <select name="age" id="age" class="form-control">
+          <option value="" disabled selected>Age</option>
+        </select>
+        <script>
+          var startAge = 18;
+          var endAge = 100;
 
-    <div class="form-group">
-      <label for="buildingNumber">Building Number:</label>
-      <input type="text" class="form-control" name="buildingNumber" id="buildingNumber" />
-    </div>
-    
-    <div class="form-group">
-      <label for="streetName">Street Name:</label>
-      <input type="text" class="form-control" name="streetName" id="streetName" />
-    </div>
+          // Populate the select element with options
+          var selectElement = document.getElementById("age");
 
-    <!-- <div class="form-group">
+          // Add options for ages
+          for (var age = startAge; age <= endAge; age++) {
+            var option = document.createElement("option");
+            option.value = age;
+            option.textContent = age;
+            selectElement.appendChild(option);
+          }
+        </script>
+      </div>
+
+      <div class="form-group">
+        <label for="houseNumber">House Number:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="houseNumber"
+          id="houseNumber"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="buildingNumber">Building Number:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="buildingNumber"
+          id="buildingNumber"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="streetName">Street Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="streetName"
+          id="streetName"
+        />
+      </div>
+
+      <!-- <div class="form-group">
       <label for="state">Select a State:</label>
       <select name="state" class="form-control" id="state">
         <option value="" disabled selected>Select a state</option>
@@ -143,12 +181,10 @@
       </select>
     </div> -->
 
-    <div class="form-group">
-      <input type="submit" class="form-control">
-    </div>
-    
-   
-      
+      <div class="form-group">
+        <button class="button-27" role="button" type="submit">Submit</button>
+      </div>
+
       <!-- <br />
       <label for="year">Census Year:</label>
       <select id="year" name="year">
@@ -169,15 +205,6 @@
           selectElement.appendChild(option);
         }
       </script> -->
-  
-      
-
-   
-    
-      
-      
-     
-  </form>
-</body>
-
+    </form>
+  </body>
 </html>
