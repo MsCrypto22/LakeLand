@@ -2,6 +2,7 @@
 
 var host = window.location.origin;
 
+// show or hide the form when clicked
 function toggleQuery() {
     var queryContainer = document.getElementById("query-container");
 
@@ -19,8 +20,8 @@ function toggleQuery() {
     document.getElementById("query-container").reset();
 }
 
+// This function runs a query on the supabase data and returns the filtered data in a table
 function filterData() {
-
     var first_name = document.getElementById("firstName");
     var last_name = document.getElementById("lastName");
     var head_house = document.getElementById("headOfHouse");

@@ -6,6 +6,7 @@ function loadSupabase() {
         .then((res) => res.json())
 }
 
+// Generate the full data table with supabase data
 async function runTable() {
     const data = await loadSupabase();
     const htmlTable = document.getElementById("example");
@@ -47,8 +48,5 @@ async function runTable() {
         }
     });
 }
-
-
-
 
 window.onload = runTable();

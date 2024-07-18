@@ -1,4 +1,4 @@
-//Load Supabase data into HTML table
+//Load Supabase data into HTML table - specific to 1950s dataset
 function displayData(data, htmlTable) {
 
     //Create table headers
