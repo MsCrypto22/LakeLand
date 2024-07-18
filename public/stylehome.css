@@ -5,12 +5,19 @@ tfoot input {
 
 body {
   background-color: rgb(185, 211, 232);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(assets/lakeland-map.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 #heading {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-top: 100px;
+  color: white;
 }
 
 #button-container {
