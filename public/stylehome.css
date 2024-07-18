@@ -4,7 +4,6 @@ tfoot input {
 }
 
 body {
-  background-color: rgb(185, 211, 232);
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url(assets/lakeland-map.jpeg);
   background-repeat: no-repeat;
@@ -55,6 +54,10 @@ select {
 #query-heading {
   color: black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#run-query-table {
+  background-color: white;
 }
 
 .button-18 {
