@@ -2,9 +2,9 @@ var host = window.location.origin;
 
 //Fetch data from Supabase database
 function loadSupabase() {
-    return fetch(`${host}/data`)
+    return fetch(`${host}/1950`)
         .then((res) => res.json())
-}
+    }
 
 // Generate the full data table with supabase data
 async function runTable() {

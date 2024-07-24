@@ -7,18 +7,18 @@ const port = 3000
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public/'))
 
-const supabaseUrl = 'https://tchabdxeyblwtuuenvoq.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRjaGFiZHhleWJsd3R1dWVudm9xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ1MDQzMDUsImV4cCI6MjAzMDA4MDMwNX0.u_NbXEqNxQtsopda8sF-2vwjLkl9K3kJeS4dyDu1A_M'
+const supabaseUrl = 'https://xapgvvhvihlinmxqetqz.supabase.co'
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhcGd2dmh2aWhsaW5teHFldHF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjEzMzA4OTYsImV4cCI6MjAzNjkwNjg5Nn0.Yl2Z1kElE1q5Jlrxkk2IDfwKiyY6otUx9hivV1XtlY0'
 const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey)
 
 app.get('/', (req, res) => {
     res.sendFile('public/home.html', { root: __dirname })
 })
 
-app.get('/data', async (req, res) => {
+app.get('/1950', async (req, res) => {
     console.log('Attempting to GET data')
     const { data, error } = await supabase
-        .from('INST490_Demo')
+        .from('1950_census')
         .select()
 
     if (error) {
@@ -32,7 +32,7 @@ app.get('/data', async (req, res) => {
     console.log('Error:', error)
 })
 
-app.post('/data', async (req, res) => {
+app.post('/1950', async (req, res) => {
     console.log('Adding Info')
 
     console.log(req.body)
@@ -51,24 +51,20 @@ app.post('/data', async (req, res) => {
     var marit = req.body.marit;
     var ag_e = req.body.ag_e;
     var placeBirth = req.body.place_Birth;
-    var birthYear = req.body.birthYear;
     var wor_k = req.body.wor_k;
     var busi = req.body.busi;
-    var sheetNum = req.body.sheetNum;
-    var mis_c = req.body.mis_c;
-    var remark = req.body.remark;
 
     
     const { data, error } = await supabase
-        .from('INST490_Demo')
+        .from('1950_census')
         .insert([{
             ed: e_d,
             house_num: houseNum,
-            building_num: buildingNum,
+            build_num: buildingNum,
             street_name: streetName,
             last_name: lastName,
             first_name: firstName,
-            relation: relat,
+            relation_head: relat,
             head_last: headLast,
             head_first: headFirst,
             sex: se_x,
@@ -76,12 +72,8 @@ app.post('/data', async (req, res) => {
             marital: marit,
             age: ag_e,
             place_birth: placeBirth,
-            birth_year: birthYear,
             work: wor_k,
-            business: busi,
-            sheet_num: sheetNum,
-            misc: mis_c,
-            remarks: remark
+            business: busi
         }])
         .select()
 
@@ -94,7 +86,7 @@ app.post('/data', async (req, res) => {
 })
 
 const fetchData = async (filters) => {
-    let query = supabase.from('INST490_Demo').select('*')
+    let query = supabase.from('1950_census').select('*')
   
     // Dynamically add filters to the query
     Object.keys(filters).forEach(field => {
@@ -125,34 +117,6 @@ app.post('/query', async (req, res) => {
     }
   })
 
-/* app.post('/filter', async (req, res) => {
-    console.log('Attempting to GET filtered data')
-    test = {
-        "name": "John", 
-        "age": 30, 
-        "city": "New York"
-    }
-    test1 = JSON.stringify(test)
-    console.log(test1)
-
-    const { data, error } = await supabase
-        .from('INST490_Demo')
-        .select()
-        .match({filters})
-        
-
-    if (error) {
-        console.log("Error")
-        res.send(error)
-    } else {
-        res.send(data)
-    }
-
-    console.log('Data:', data)
-    console.log('Error:', error)
-
-})
- */
 app.listen(port, () => {
     console.log('App is alive!')
 })

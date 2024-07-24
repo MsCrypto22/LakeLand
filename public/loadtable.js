@@ -44,11 +44,11 @@ function displayData(data, htmlTable) {
 
         ed.innerHTML = row.ed;
         house_num.innerHTML = row.house_num;
-        building_num.innerHTML = row.building_num;
+        building_num.innerHTML = row.build_num;
         street_name.innerHTML = row.street_name;
         firstName.innerHTML = row.first_name;
         lastName.innerHTML = row.last_name;
-        relation.innerHTML = row.relation;
+        relation.innerHTML = row.relation_head;
         head_last.innerHTML = row.head_last;
         head_first.innerHTML = row.head_first;
         sex.innerHTML = row.sex;

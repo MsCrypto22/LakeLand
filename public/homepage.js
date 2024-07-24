@@ -20,6 +20,15 @@ function toggleQuery() {
     document.getElementById("query-container").reset();
 }
 
+function capitalizeWord(word) {
+    const capitalized =
+        word.charAt(0).toUpperCase()
+        + word.slice(1)
+
+    return capitalized
+}
+
+
 // This function runs a query on the supabase data and returns the filtered data in a table
 function filterData() {
     var first_name = document.getElementById("firstName");
@@ -33,16 +42,19 @@ function filterData() {
     var values = {};
 
     if (first_name.value != '') {
-        values['first_name'] = first_name.value
+        word = first_name.value
+        values['first_name'] = capitalizeWord(word)
     }
 
     if (last_name.value != '') {
-        values['last_name'] = last_name.value
+        word = last_name.value
+        values['last_name'] = capitalizeWord(word)
 
     }
 
     if (head_house.value != '') {
-        values['head_last'] = head_house.value
+        word = head_house.value
+        values['head_last'] = capitalizeWord(word)
 
     }
 
@@ -62,7 +74,8 @@ function filterData() {
     }
 
     if (street_names.value != '') {
-        values['street_name'] = street_names.value
+        word = street_names.value
+        values['street_name'] = capitalizeWord(word)
 
     }
 
