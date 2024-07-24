@@ -15,9 +15,11 @@ function toggleQuery() {
     } else {
         queryContainer.style.display = "none";
     }
+
+    // clear the table when the form is submitted
     table = document.getElementById("run-query-table")
     table.innerHTML = '';
-    document.getElementById("query-container").reset();
+    document.getElementById("form-container").reset();
 }
 
 function capitalizeWord(word) {
@@ -34,9 +36,7 @@ function filterData() {
     var first_name = document.getElementById("firstName");
     var last_name = document.getElementById("lastName");
     var head_house = document.getElementById("headOfHouse");
-    var age_1 = document.getElementById("age");
     var house_number = document.getElementById("houseNumber");
-    var building_number = document.getElementById("buildingNumber");
     var street_names = document.getElementById("streetName");
 
     var values = {};
@@ -58,18 +58,8 @@ function filterData() {
 
     }
 
-    if (age_1.value != '') {
-        values['age'] = age_1.value
-
-    }
-
     if (house_number.value != '') {
         values['house_num'] = house_number.value
-
-    }
-
-    if (building_number.value != '') {
-        values['building_num'] = building_number.value
 
     }
 
@@ -98,5 +88,6 @@ function filterData() {
             console.error('Error:', error);
         });
 
+    // clear the table and form when submitted
     toggleQuery();
 }

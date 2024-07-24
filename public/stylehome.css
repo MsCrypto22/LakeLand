@@ -29,15 +29,6 @@ body {
 
 #query-container {
   display: none;
-  background-color: #6dacec;
-  width: 500px;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 2px;
-  padding-bottom: 15px;
-  margin: 20px auto;
-  font-size: 22px;
-  color: rgb(255, 255, 255);
 }
 
 input[type="text"],
@@ -154,3 +145,4 @@ select {
   box-shadow: none;
   transform: translateY(0);
 }
+

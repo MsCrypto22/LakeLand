@@ -1,211 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.67" />
-    <link rel="stylesheet" href="stylehome.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
 
-    <script src="loadtable.js" defer></script>
-    <script src="homepage.js" defer></script>
-    <title>Home Page</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.67" />
+  <link rel="stylesheet" href="stylehome.css" />
 
-  <body>
-    <div class="container text-center">
-      <h1 id="heading" class="display-3">
-        Welcome to the Lakeland Genealogy Portal
-      </h1>
+  <!-- use bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script src="loadtable.js" defer></script>
+  <script src="homepage.js" defer></script>
+  <title>Home Page</title>
+</head>
+
+<body>
+  <div class="container text-center">
+    <h1 id="heading" class="display-3">
+      Welcome to the Lakeland Genealogy Portal
+    </h1>
+  </div>
+
+  <!--Button container-->
+  <div id="button-container">
+    <!--Query button-->
+    <button class="button-18" role="button" onclick="toggleQuery()">
+      Open Query
+    </button>
+    <!--Navigate to full Database button-->
+    <a href="sheets.html">
+      <button class="button-18" role="button">Go to Full Database</button>
+    </a>
+  </div>
+
+  <table id="run-query-table" class="table table-striped" style="width: 100%"></table>
+
+  <div class="container mt-5" id="query-container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10">
+        <div class="card p-3  py-4">
+          
+          <form onsubmit="filterData(); return false;" id="form-container">
+            <h5>Search our records: </h5>
+            <div class="row g-3 mt-2">
+
+              <div class="col-md-4">
+
+                <input type="text" id="firstName" class="form-control" placeholder="First Name: " >
+
+              </div>
+
+              <div class="col-md-4">
+
+                <input type="text" class="form-control" placeholder="Last Name: " id="lastName">
+
+              </div>
+
+              <div class="col-md-3">
+
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Search</button>
+
+              </div>
+
+            </div>
+
+            <div class="mt-3">
+
+              <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                aria-controls="collapseExample" class="advanced">
+                Advanced Search<i class="fa fa-angle-down"></i>
+              </a>
+
+
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+
+                  <div class="row">
+
+                    <div class="col-md-4">
+
+                      <input type="text" placeholder="Head of House Last Name: " class="form-control" id="headOfHouse">
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                      <input type="text" class="form-control" placeholder="House Number: " id="houseNumber">
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                      <input type="text" class="form-control" placeholder="Street Name: " id="streetName">
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--Query Section-->
+
+  <!-- <form id="query-container" onsubmit="filterData(); return false;" class="card">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" class="form-control" name="firstName" id="firstName" />
     </div>
 
-    <!--Button container-->
-    <div id="button-container">
-      <!--Query button-->
-      <button class="button-18" role="button" onclick="toggleQuery()">
-        Open Query
-      </button>
-      <!--Navigate to full Database button-->
-      <a href="sheets.html">
-        <button class="button-18" role="button">Go to Full Database</button>
-      </a>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" class="form-control" name="lastName" id="lastName" />
     </div>
 
-    <table
-      id="run-query-table"
-      class="table table-striped"
-      style="width: 100%"
-    ></table>
+    <div class="form-group">
+      <label for="headOfHouse"> Head of House Last Name:</label>
+      <input type="text" class="form-control" name="headOfHouse" id="headOfHouse" />
+    </div>
 
-    <!--Query Section-->
-
-    <form
-      id="query-container"
-      onsubmit="filterData(); return false;"
-      class="card"
-    >
-      <div class="form-group">
-        <label for="firstName">First Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          name="firstName"
-          id="firstName"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="lastName">Last Name:</label>
-        <input type="text" class="form-control" name="lastName" id="lastName" />
-      </div>
-
-      <div class="form-group">
-        <label for="headOfHouse"> Head of House Last Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          name="headOfHouse"
-          id="headOfHouse"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="age">Age:</label>
-        <select name="age" id="age" class="form-control">
-          <option value="" disabled selected>Age</option>
-        </select>
-        <script>
-          var startAge = 18;
-          var endAge = 100;
-
-          // Populate the select element with options
-          var selectElement = document.getElementById("age");
-
-          // Add options for ages
-          for (var age = startAge; age <= endAge; age++) {
-            var option = document.createElement("option");
-            option.value = age;
-            option.textContent = age;
-            selectElement.appendChild(option);
-          }
-        </script>
-      </div>
-
-      <div class="form-group">
-        <label for="houseNumber">House Number:</label>
-        <input
-          type="text"
-          class="form-control"
-          name="houseNumber"
-          id="houseNumber"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="buildingNumber">Building Number:</label>
-        <input
-          type="text"
-          class="form-control"
-          name="buildingNumber"
-          id="buildingNumber"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="streetName">Street Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          name="streetName"
-          id="streetName"
-        />
-      </div>
-
-      <!-- <div class="form-group">
-      <label for="state">Select a State:</label>
-      <select name="state" class="form-control" id="state">
-        <option value="" disabled selected>Select a state</option>
-        <option value="Alabama">AL - Alabama</option>
-        <option value="Alaska">AK - Alaska</option>
-        <option value="Arizona">AZ - Arizona</option>
-        <option value="Arkansas">AR - Arkansas</option>
-        <option value="California">CA - California</option>
-        <option value="Colorado">CO - Colorado</option>
-        <option value="Connecticut">CT - Connecticut</option>
-        <option value="Delaware">DE - Delaware</option>
-        <option value="Florida">FL - Florida</option>
-        <option value="GA">GA - Georgia</option>
-        <option value="HI">HI - Hawaii</option>
-        <option value="ID">ID - Idaho</option>
-        <option value="IL">IL - Illinois</option>
-        <option value="IN">IN - Indiana</option>
-        <option value="IA">IA - Iowa</option>
-        <option value="KS">KS - Kansas</option>
-        <option value="KY">KY - Kentucky</option>
-        <option value="LA">LA - Louisiana</option>
-        <option value="ME">ME - Maine</option>
-        <option value="Maryland">MD - Maryland</option>
-        <option value="MA">MA - Massachusetts</option>
-        <option value="MI">MI - Michigan</option>
-        <option value="MN">MN - Minnesota</option>
-        <option value="MS">MS - Mississippi</option>
-        <option value="MO">MO - Missouri</option>
-        <option value="MT">MT - Montana</option>
-        <option value="NE">NE - Nebraska</option>
-        <option value="NV">NV - Nevada</option>
-        <option value="NH">NH - New Hampshire</option>
-        <option value="NJ">NJ - New Jersey</option>
-        <option value="NM">NM - New Mexico</option>
-        <option value="NY">NY - New York</option>
-        <option value="North Carolina">NC - North Carolina</option>
-        <option value="ND">ND - North Dakota</option>
-        <option value="OH">OH - Ohio</option>
-        <option value="OK">OK - Oklahoma</option>
-        <option value="OR">OR - Oregon</option>
-        <option value="PA">PA - Pennsylvania</option>
-        <option value="RI">RI - Rhode Island</option>
-        <option value="SC">SC - South Carolina</option>
-        <option value="SD">SD - South Dakota</option>
-        <option value="TN">TN - Tennessee</option>
-        <option value="TX">TX - Texas</option>
-        <option value="UT">UT - Utah</option>
-        <option value="VT">VT - Vermont</option>
-        <option value="VA">VA - Virginia</option>
-        <option value="WA">WA - Washington</option>
-        <option value="WV">WV - West Virginia</option>
-        <option value="WI">WI - Wisconsin</option>
-        <option value="WY">WY - Wyoming</option>
-      </select>
-    </div> -->
-
-      <div class="form-group">
-        <button class="button-27" role="button" type="submit">Submit</button>
-      </div>
-
-      <!-- <br />
-      <label for="year">Census Year:</label>
-      <select id="year" name="year">
-        <option value="" disabled selected>Select a year</option>
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <select name="age" id="age" class="form-control">
+        <option value="" disabled selected>Age</option>
       </select>
       <script>
-        // Get current year
-        var currentYear = new Date().getFullYear();
-        // Set range of past years 
-        var startYear = currentYear - 100;
+        var startAge = 18;
+        var endAge = 100;
+
         // Populate the select element with options
-        var selectElement = document.getElementById("year");
-        // Add options for past years up to current year
-        for (var year = currentYear; year >= startYear; year--) {
+        var selectElement = document.getElementById("age");
+
+        // Add options for ages
+        for (var age = startAge; age <= endAge; age++) {
           var option = document.createElement("option");
-          option.value = year;
-          option.textContent = year;
+          option.value = age;
+          option.textContent = age;
           selectElement.appendChild(option);
         }
-      </script> -->
-    </form>
-  </body>
+      </script>
+    </div>
+
+    <div class="form-group">
+      <label for="houseNumber">House Number:</label>
+      <input type="text" class="form-control" name="houseNumber" id="houseNumber" />
+    </div>
+
+    <div class="form-group">
+      <label for="buildingNumber">Building Number:</label>
+      <input type="text" class="form-control" name="buildingNumber" id="buildingNumber" />
+    </div>
+
+    <div class="form-group">
+      <label for="streetName">Street Name:</label>
+      <input type="text" class="form-control" name="streetName" id="streetName" />
+    </div>
+
+    <div class="form-group">
+      <button class="button-27" role="button" type="submit">Submit</button>
+    </div>
+  </form> -->
+</body>
+
 </html>
