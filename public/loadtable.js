@@ -20,6 +20,19 @@ function displayData(data, htmlTable) {
     thead.appendChild(tr)
     htmlTable.appendChild(thead);
 
+    var tfoot = document.createElement("tfoot");
+    tfoot.style.display = "table-header-group";
+    tr = document.createElement("tr");
+    
+    for (let i = 0; i < header_vals.length; i++) {
+        new_header = document.createElement("th");
+        new_header.innerHTML = header_vals[i];
+        tr.appendChild(new_header);
+    }
+
+    tfoot.appendChild(tr)
+    htmlTable.appendChild(tfoot);
+
     tbody = document.createElement("tbody")
 
     //Populate table with data from Supabase
@@ -81,12 +94,5 @@ function displayData(data, htmlTable) {
     })
 
 
-    tfoot = document.createElement("tfoot");
-    tr = document.createElement("tr");
     
-    for (let i = 0; i < header_vals.length; i++) {
-        new_header = document.createElement("th");
-        new_header.innerHTML = header_vals[i];
-        tr.appendChild(new_header);
-    }
 }

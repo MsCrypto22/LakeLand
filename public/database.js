@@ -13,9 +13,6 @@ async function runTable() {
 
     displayData(data, htmlTable);
 
-    tfoot.appendChild(tr)
-    htmlTable.appendChild(tfoot);
-
     //Initialize Datatables plugin- see Datatables documentation for more info
     new DataTable('#example', {
         //add column visibility

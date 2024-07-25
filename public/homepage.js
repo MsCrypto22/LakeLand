@@ -83,6 +83,8 @@ function filterData() {
 
             displayData(data, htmlTable);
 
+            document.getElementById("run-query-table").deleteTFoot();
+
         })
         .catch(error => {
             console.error('Error:', error);
