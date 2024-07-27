@@ -75,7 +75,7 @@ function filterData() {
       console.log("Filtered Data:", data);
       var htmlTable = document.getElementById("run-query-table");
 
-      displayData(data, htmlTable);
+      displayData1950(data, htmlTable);
 
       document.getElementById("run-query-table").deleteTFoot();
     })
