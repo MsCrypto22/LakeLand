@@ -12,20 +12,28 @@ function toggleQuery() {
 
   if (displayStyle === "none") {
     queryContainer.style.display = "block";
+    document.getElementById('filtered-display').className = "d-none";
   } else {
     queryContainer.style.display = "none";
   }
 
   // clear the table when the form is submitted
-  table = document.getElementById("run-query-table");
-  table.innerHTML = "";
+
+  document.getElementById("run-query-1950").innerHTML = "";
+  document.getElementById("run-query-1900").innerHTML = "";
+  document.getElementById("run-query-1940").innerHTML = "";
+  document.getElementById("run-query-1965").innerHTML = "";
+  document.getElementById('head1900').innerHTML = "1900 Census: "
+  document.getElementById('head1940').innerHTML = "1940 Census: "
+  document.getElementById('head1950').innerHTML = "1950 Census: "
+  document.getElementById('head1965').innerHTML = "1965 Voter Registration: "
   document.getElementById("form-container").reset();
 }
 
 function capitalizeWord(word) {
-  const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
-
-  return capitalized;
+  const finalSentence = word.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+  console.log(finalSentence)
+  return finalSentence;
 }
 
 // This function runs a query on the supabase data and returns the filtered data in a table
@@ -36,6 +44,9 @@ function filterData() {
   var head_house = document.getElementById("headOfHouse");
   var house_number = document.getElementById("houseNumber");
   var street_names = document.getElementById("streetName");
+  var build_num = document.getElementById("buildNum");
+  var age = document.getElementById("age");
+
 
   var values = {};
 
@@ -63,7 +74,18 @@ function filterData() {
     values["street_name"] = capitalizeWord(word);
   }
 
-  fetch(`${host}/query`, {
+  if (age.value != "") {
+    values["street_name"] = age.value
+  }
+
+  if (build_num.value != "") {
+    values["street_name"] = build_num.value
+  }
+
+  document.getElementById('filtered-display').className = "d-block";
+
+  // 1900 filtered table
+  fetch(`${host}/query1900`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -73,16 +95,116 @@ function filterData() {
     .then((response) => response.json())
     .then((data) => {
       console.log("Filtered Data:", data);
-      var htmlTable = document.getElementById("run-query-table");
+      if (data.length != 0) {
+        var htmlTable = document.getElementById("run-query-1900");
+        displayData(data, htmlTable, '1900');
+        document.getElementById("run-query-1900").deleteTFoot();
+        new DataTable('#run-query-1900', {
+          destroy: true,
+          pageLength: 5,
+          searching: false,
+          layout: {
+            topStart: null
+          }
+        });
+      } else {
+        document.getElementById('head1900').innerHTML += "No Data Found"
+      }
 
-      displayData1950(data, htmlTable);
-
-      document.getElementById("run-query-table").deleteTFoot();
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 
+  // 1940 filtered table
+  fetch(`${host}/query1940`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length != 0) {
+        var htmlTable = document.getElementById("run-query-1940");
+        displayData(data, htmlTable, '1940');
+        document.getElementById("run-query-1940").deleteTFoot();
+        new DataTable('#run-query-1940', {
+          destroy: true,
+          pageLength: 5,
+          searching: false,
+          layout: {
+            topStart: null
+          }
+        });
+      } else {
+        document.getElementById('head1940').innerHTML += "No Data Found"
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+  //1950 filtered table
+  fetch(`${host}/query1950`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length != 0) {
+        var htmlTable = document.getElementById("run-query-1950");
+        displayData(data, htmlTable, '1950');
+        document.getElementById("run-query-1950").deleteTFoot();
+        new DataTable('#run-query-1950', {
+          destroy: true,
+          pageLength: 5,
+          searching: false,
+          layout: {
+            topStart: null
+          }
+        });
+      } else {
+        document.getElementById('head1950').innerHTML += "No Data Found"
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+  // 1965 filtered table
+  fetch(`${host}/query1965`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length != 0) {
+        var htmlTable = document.getElementById("run-query-1965");
+        displayData(data, htmlTable, '1965');
+        document.getElementById("run-query-1965").deleteTFoot();
+        new DataTable('#run-query-1965', {
+          destroy: true,
+          pageLength: 5,
+          searching: false,
+          layout: {
+            topStart: null
+          }
+        });
+      } else {
+        document.getElementById('head1965').innerHTML += "No Data Found"
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   // clear the table and form when submitted
   toggleQuery();
 }

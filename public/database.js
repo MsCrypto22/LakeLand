@@ -29,13 +29,13 @@ async function runTable() {
   const htmlTable = document.getElementById("example");
 
   if (path === "/1950s.html") {
-    displayData1950(data, htmlTable);
+    displayData(data, htmlTable, "1950");
   } else if (path === "/1940s.html") {
-    displayData1940(data, htmlTable);
+    displayData(data, htmlTable, "1940");
   } else if (path === "/1900s.html") {
-    displayData1900(data, htmlTable);
+    displayData(data, htmlTable, "1900");
   } else if (path === "/1965.html") {
-    displayData1965(data, htmlTable);
+    displayData(data, htmlTable, "1965");
   }
 
   //Initialize Datatables plugin- see Datatables documentation for more info

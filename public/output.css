@@ -592,6 +592,10 @@ video {
   margin: 0px;
 }
 
+.m-1 {
+  margin: 0.25rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -618,18 +622,6 @@ video {
 
 .mt-\[120px\] {
   margin-top: 120px;
-}
-
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
-
-.mb-20 {
-  margin-bottom: 5rem;
-}
-
-.mb-\[100px\] {
-  margin-bottom: 100px;
 }
 
 .box-border {

@@ -264,7 +264,7 @@ app.post("/1965", async (req, res) => {
   }
 });
 
-const fetchData = async (filters) => {
+const fetchData1950 = async (filters) => {
   let query = supabase.from("1950_census").select("*");
 
   // Dynamically add filters to the query
@@ -285,11 +285,107 @@ const fetchData = async (filters) => {
   return data;
 };
 
-app.post("/query", async (req, res) => {
+app.post("/query1950", async (req, res) => {
   const filters = req.body;
 
   try {
-    const data = await fetchData(filters);
+    const data = await fetchData1950(filters);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+const fetchData1900 = async (filters) => {
+  let query = supabase.from("1900_census").select("*");
+
+  // Dynamically add filters to the query
+  Object.keys(filters).forEach((field) => {
+    if (filters[field]) {
+      query = query.eq(field, filters[field]);
+    }
+  });
+
+  // Execute the query
+  const { data, error } = await query;
+
+  if (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+
+  return data;
+};
+
+app.post("/query1900", async (req, res) => {
+  const filters = req.body;
+
+  try {
+    const data = await fetchData1900(filters);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+const fetchData1940 = async (filters) => {
+  let query = supabase.from("1940_census").select("*");
+
+  // Dynamically add filters to the query
+  Object.keys(filters).forEach((field) => {
+    if (filters[field]) {
+      query = query.eq(field, filters[field]);
+    }
+  });
+
+  // Execute the query
+  const { data, error } = await query;
+
+  if (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+
+  return data;
+};
+
+app.post("/query1940", async (req, res) => {
+  const filters = req.body;
+
+  try {
+    const data = await fetchData1940(filters);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+const fetchData1965 = async (filters) => {
+  let query = supabase.from("1965_voters").select("*");
+
+  // Dynamically add filters to the query
+  Object.keys(filters).forEach((field) => {
+    if (filters[field]) {
+      query = query.eq(field, filters[field]);
+    }
+  });
+
+  // Execute the query
+  const { data, error } = await query;
+
+  if (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+
+  return data;
+};
+
+app.post("/query1965", async (req, res) => {
+  const filters = req.body;
+
+  try {
+    const data = await fetchData1965(filters);
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: error.message });
