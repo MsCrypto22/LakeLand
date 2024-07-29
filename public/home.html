@@ -63,29 +63,91 @@
     </div>
   </nav>
 
-  <h1 class="text-8xl text-center mt-[120px] font-serif">
-    Welcome to the Lakeland Genealogy Portal
-  </h1>
 
-  <p class="text-center text-3xl mt-20 px-20">
-    This website allows you to search, filter, and query data from the
-    lakeland datasets. Currently we have data from the 1950s, 1940, 1900s
-    census data and the 1965 voters list. To get started click the green
-    button below to start a query!
-  </p>
 
   <!--Button container-->
-  <div id="button-container" class="flex mt-28 p-3 justify-center items-center">
-    <!--Query button-->
-    <button type="button" class="btn btn-success" onclick="toggleQuery()">
-      <p class="m-0 p-2 text-2xl">Open Query</p>
-    </button>
+  <div id="button-container" class="container mt-28 p-3 justify-center items-center">
+    <div class="row">
+      <h1 class="text-8xl text-center  font-serif">
+        Welcome to the Lakeland Genealogy Portal
+      </h1>
+    </div>
+    <div class="row justify-center m-10">
+      <!--Query button-->
+      <button type="button" class="btn btn-primary" onclick="toggleQuery()">
+        <p class="m-0 p-2 text-2xl">Open Query</p>
+      </button>
+    </div>
+    <div class="row">
+      <div class="container mt-1 hidden" id="query-container">
+        <div class="row d-flex justify-center">
+          <div class="col-md-10">
+            <div class="card p-3 py-4">
+              <form class="box-border w-full p-3 text-[18px] border-solid border-[1px] border-[#ccc]"
+                onsubmit="filterData(); return false;" id="form-container">
+                <h5>Search our records:</h5>
+                <div class="row g-3 mt-2">
+                  <div class="col-md-4">
+                    <input type="text" id="firstName" class="form-control" placeholder="First Name: " />
+                  </div>
+    
+                  <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Last Name: " id="lastName" />
+                  </div>
+    
+                  <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                      Search
+                    </button>
+                  </div>
+                </div>
+    
+                <div class="mt-3">
+                  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                    aria-controls="collapseExample" class="advanced">
+                    Advanced Search<i class="fa fa-angle-down"></i>
+                  </a>
+    
+                  <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <input type="text" placeholder="Head of House Last Name: " class="form-control"
+                            id="headOfHouse" />
+                        </div>
+    
+                        <div class="col-md-4">
+                          <input type="number" pattern=“[0-9]+” placeholder="Building Number: " class="form-control"
+                            id="buildNum" />
+                        </div>
+    
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" placeholder="House Number: " id="houseNumber" />
+                        </div>
+    
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" placeholder="Street Name: " id="streetName" />
+                        </div>
+    
+                        <div class="col-md-4">
+                          <input type="number" class="form-control" placeholder="Age: " id="age" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Filtered data table container -->
   <div class="container-fluid d-none" id="filtered-display">
     <div class="row m-1">
-        <h2 id="head1900">1900s Census: </h2>
+      <h2 id="head1900">1900s Census: </h2>
     </div>
     <div class="row m-1">
       <table id="run-query-1900" class="table table-striped mt-10 w-full text-black bg-white">
@@ -93,7 +155,7 @@
     </div>
 
     <div class="row m-1">
-        <h2 id="head1940">1940s Census: </h2>
+      <h2 id="head1940">1940s Census: </h2>
     </div>
 
     <div class="row m-1">
@@ -102,84 +164,21 @@
     </div>
 
     <div class="row m-1">
-        <h2 id="head1950">1950s Census: </h2>
+      <h2 id="head1950">1950s Census: </h2>
     </div>
 
     <div class="row m-1">
       <table id="run-query-1950" class="table table-light table-striped table-hover mt-10 w-full text-black">
       </table>
     </div>
-    
+
     <div class="row m-1">
-        <h2 id="head1965">1965 Voter Registration: </h2>
+      <h2 id="head1965">1965 Voter Registration: </h2>
     </div>
 
     <div class="container-fluid">
       <table id="run-query-1965" class="table table-striped mt-10 w-full text-black bg-white">
       </table>
-    </div>
-  </div>
-
-  <div class="container mt-5 hidden" id="query-container">
-    <div class="row d-flex justify-center">
-      <div class="col-md-10">
-        <div class="card p-3 py-4">
-          <form class="box-border w-full p-3 text-[18px] border-solid border-[1px] border-[#ccc]"
-            onsubmit="filterData(); return false;" id="form-container">
-            <h5>Search our records:</h5>
-            <div class="row g-3 mt-2">
-              <div class="col-md-4">
-                <input type="text" id="firstName" class="form-control" placeholder="First Name: " />
-              </div>
-
-              <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Last Name: " id="lastName" />
-              </div>
-
-              <div class="col-md-3">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">
-                  Search
-                </button>
-              </div>
-            </div>
-
-            <div class="mt-3">
-              <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-                aria-controls="collapseExample" class="advanced">
-                Advanced Search<i class="fa fa-angle-down"></i>
-              </a>
-
-              <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <input type="text" placeholder="Head of House Last Name: " class="form-control"
-                        id="headOfHouse" />
-                    </div>
-
-                    <div class="col-md-4">
-                      <input type="number" pattern=“[0-9]+” placeholder="Building Number: " class="form-control"
-                        id="buildNum" />
-                    </div>
-
-                    <div class="col-md-4">
-                      <input type="text" class="form-control" placeholder="House Number: " id="houseNumber" />
-                    </div>
-
-                    <div class="col-md-4">
-                      <input type="text" class="form-control" placeholder="Street Name: " id="streetName" />
-                    </div>
-
-                    <div class="col-md-4">
-                      <input type="number" class="form-control" placeholder="Age: " id="age" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
     </div>
   </div>
 </body>
