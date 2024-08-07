@@ -600,6 +600,10 @@ video {
   margin: 2.5rem;
 }
 
+.m-20 {
+  margin: 5rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -624,12 +628,24 @@ video {
   margin-top: 120px;
 }
 
+.mt-\[100px\] {
+  margin-top: 100px;
+}
+
+.mt-\[90px\] {
+  margin-top: 90px;
+}
+
 .box-border {
   box-sizing: border-box;
 }
 
 .block {
   display: block;
+}
+
+.flex {
+  display: flex;
 }
 
 .table {
@@ -700,6 +716,10 @@ video {
 
 .p-3 {
   padding: 0.75rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
 }
 
 .py-4 {

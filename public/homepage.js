@@ -32,7 +32,6 @@ function toggleQuery() {
 
 function capitalizeWord(word) {
   const finalSentence = word.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
-  console.log(finalSentence)
   return finalSentence;
 }
 
@@ -94,7 +93,6 @@ function filterData() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Filtered Data:", data);
       if (data.length != 0) {
         var htmlTable = document.getElementById("run-query-1900");
         displayData(data, htmlTable, '1900');
