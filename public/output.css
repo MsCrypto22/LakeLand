@@ -628,10 +628,6 @@ video {
   margin-top: 120px;
 }
 
-.mt-\[100px\] {
-  margin-top: 100px;
-}
-
 .mt-\[90px\] {
   margin-top: 90px;
 }
@@ -642,10 +638,6 @@ video {
 
 .block {
   display: block;
-}
-
-.flex {
-  display: flex;
 }
 
 .table {
@@ -716,10 +708,6 @@ video {
 
 .p-3 {
   padding: 0.75rem;
-}
-
-.p-10 {
-  padding: 2.5rem;
 }
 
 .py-4 {
