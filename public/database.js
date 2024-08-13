@@ -21,6 +21,16 @@ if (path === "/1950s.html") {
   function loadSupabase() {
     return fetch(`${host}/1965`).then((res) => res.json());
   }
+} else if (path === "/1920s.html") {
+  //Fetch data from Supabase database
+  function loadSupabase() {
+    return fetch(`${host}/1920`).then((res) => res.json());
+  }
+} else if (path === "/1930s.html") {
+  //Fetch data from Supabase database
+  function loadSupabase() {
+    return fetch(`${host}/1930`).then((res) => res.json());
+  }
 }
 
 // Generate the full data table with supabase data
@@ -36,6 +46,10 @@ async function runTable() {
     displayData(data, htmlTable, "1900");
   } else if (path === "/1965.html") {
     displayData(data, htmlTable, "1965");
+  } else if (path === "/1920s.html") {
+    displayData(data, htmlTable, "1920");
+  } else if (path === "/1930s.html") {
+    displayData(data, htmlTable, "1930");
   }
 
   //Initialize Datatables plugin- see Datatables documentation for more info

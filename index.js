@@ -28,7 +28,6 @@ app.get("/1950", async (req, res) => {
     res.send(data);
   }
 
-  console.log("Data:", data);
   console.log("Error:", error);
 });
 
@@ -44,7 +43,6 @@ app.get("/1940", async (req, res) => {
     res.send(data);
   }
 
-  console.log("Data:", data);
   console.log("Error:", error);
 });
 
@@ -60,7 +58,6 @@ app.get("/1900", async (req, res) => {
     res.send(data);
   }
 
-  console.log("Data:", data);
   console.log("Error:", error);
 });
 
@@ -75,7 +72,34 @@ app.get("/1965", async (req, res) => {
     res.send(data);
   }
 
-  console.log("Data:", data);
+  console.log("Error:", error);
+});
+
+app.get("/1920", async (req, res) => {
+  console.log("Attempting to GET data");
+  const { data, error } = await supabase.from("1920_census").select();
+
+  if (error) {
+    console.log("Error");
+    res.send(error);
+  } else {
+    res.send(data);
+  }
+
+  console.log("Error:", error);
+});
+
+app.get("/1930", async (req, res) => {
+  console.log("Attempting to GET data");
+  const { data, error } = await supabase.from("1930_census").select();
+
+  if (error) {
+    console.log("Error");
+    res.send(error);
+  } else {
+    res.send(data);
+  }
+
   console.log("Error:", error);
 });
 
@@ -322,6 +346,70 @@ app.post("/query1900", async (req, res) => {
 
   try {
     const data = await fetchData1900(filters);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+const fetchData1920 = async (filters) => {
+  let query = supabase.from("1920_census").select("*");
+
+  // Dynamically add filters to the query
+  Object.keys(filters).forEach((field) => {
+    if (filters[field]) {
+      query = query.eq(field, filters[field]);
+    }
+  });
+
+  // Execute the query
+  const { data, error } = await query;
+
+  if (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+
+  return data;
+};
+
+app.post("/query1920", async (req, res) => {
+  const filters = req.body;
+
+  try {
+    const data = await fetchData1920(filters);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+const fetchData1930 = async (filters) => {
+  let query = supabase.from("1930_census").select("*");
+
+  // Dynamically add filters to the query
+  Object.keys(filters).forEach((field) => {
+    if (filters[field]) {
+      query = query.eq(field, filters[field]);
+    }
+  });
+
+  // Execute the query
+  const { data, error } = await query;
+
+  if (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+
+  return data;
+};
+
+app.post("/query1930", async (req, res) => {
+  const filters = req.body;
+
+  try {
+    const data = await fetchData1930(filters);
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: error.message });

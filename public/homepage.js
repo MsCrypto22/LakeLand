@@ -21,9 +21,13 @@ function toggleQuery() {
 
   document.getElementById("run-query-1950").innerHTML = "";
   document.getElementById("run-query-1900").innerHTML = "";
+  document.getElementById("run-query-1920").innerHTML = "";
+  document.getElementById("run-query-1930").innerHTML = "";
   document.getElementById("run-query-1940").innerHTML = "";
   document.getElementById("run-query-1965").innerHTML = "";
   document.getElementById('head1900').innerHTML = "1900 Census: "
+  document.getElementById('head1920').innerHTML = "1920 Census: "
+  document.getElementById('head1930').innerHTML = "1930 Census: "
   document.getElementById('head1940').innerHTML = "1940 Census: "
   document.getElementById('head1950').innerHTML = "1950 Census: "
   document.getElementById('head1965').innerHTML = "1965 Voter Registration: "
@@ -107,6 +111,68 @@ function filterData() {
         });
       } else {
         document.getElementById('head1900').innerHTML += "No Data Found"
+      }
+
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+  // 1920 filtered table
+  fetch(`${host}/query1920`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length != 0) {
+        var htmlTable = document.getElementById("run-query-1920");
+        displayData(data, htmlTable, '1920');
+        document.getElementById("run-query-1920").deleteTFoot();
+        new DataTable('#run-query-1920', {
+          destroy: true,
+          pageLength: 5,
+          searching: false,
+          layout: {
+            topStart: null
+          }
+        });
+      } else {
+        document.getElementById('head1920').innerHTML += "No Data Found"
+      }
+
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+  // 1930 filtered table
+  fetch(`${host}/query1930`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length != 0) {
+        var htmlTable = document.getElementById("run-query-1930");
+        displayData(data, htmlTable, '1930');
+        document.getElementById("run-query-1930").deleteTFoot();
+        new DataTable('#run-query-1930', {
+          destroy: true,
+          pageLength: 5,
+          searching: false,
+          layout: {
+            topStart: null
+          }
+        });
+      } else {
+        document.getElementById('head1930').innerHTML += "No Data Found"
       }
 
     })

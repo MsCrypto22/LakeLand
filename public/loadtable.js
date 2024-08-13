@@ -3,11 +3,8 @@ function headerVals(id) {
 
     if (id == "1900") {
         header_vals = [
-            "ED",
             "Dwelling",
             "Family",
-            "House #",
-            "Street #",
             "Last Name",
             "First Name",
             "HoH Last Name",
@@ -19,22 +16,64 @@ function headerVals(id) {
             "Marital Status",
             "Place of Birth",
             "Work",
+            "Owned/Rented"
+        ];
+
+    } else if (id == "1920") {
+        header_vals = [
+            "Dwelling",
+            "Family",
+            "Last Name",
+            "First Name",
+            "Relation to HoH",
+            "HoH Last Name",
+            "HoH First Name",
+            "Sex",
+            "Race",
+            "Marital Status",
+            "Age",
+            "Place of Birth",
+            "Work",
+            "Business",
+            "Owned/Rented"
+        ];
+
+    } else if (id == "1930") {
+        header_vals = [
+            "Dwelling",
+            "Family",
+            "Street Name",
+            "Last Name",
+            "First Name",
+            "Relation to HoH",
+            "Sex",
+            "Race",
+            "Marital Status",
+            "Age",
+            "Place of Birth",
+            "Work",
+            "Business",
+            "Owned/Rented"
         ];
 
     } else if (id == "1940") {
         header_vals = [
             "ED",
             "House #",
-            "Street #",
-            "First Name",
+            "Street Name",
             "Last Name",
+            "First Name",
             "Relation to HoH",
             "HoH Last Name",
             "HoH First Name",
             "Sex",
+            "Race",
             "Marital Status",
             "Age",
             "Place of Birth",
+            "Work",
+            "Business",
+            "Owned/Rented"
         ];
 
     } else if (id == "1950") {
@@ -42,7 +81,7 @@ function headerVals(id) {
             "ED",
             "House #",
             "Building #",
-            "Street #",
+            "Street Name",
             "Last Name",
             "First Name",
             "Relation to HoH",
@@ -64,7 +103,7 @@ function headerVals(id) {
     return header_vals
 }
 
-//Load Supabase data into HTML table - specific to 1950s dataset
+//Load Supabase data into HTML table
 function displayData(data, htmlTable, id) {
     //Create table headers
     header_vals = headerVals(id);
@@ -113,7 +152,7 @@ function displayData(data, htmlTable, id) {
             tr.appendChild(curr);
             index++;
         }
-        
+
         tbody.appendChild(tr);
         htmlTable.appendChild(tbody);
     });
