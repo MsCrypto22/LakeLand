@@ -2,15 +2,18 @@ const supabaseClient = require("@supabase/supabase-js");
 const bodyParser = require("body-parser");
 const express = require("express");
 
+require("dotenv").config();
+
 const app = express();
 const port = 3000;
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public/"));
 
-const supabaseUrl = "https://xapgvvhvihlinmxqetqz.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhcGd2dmh2aWhsaW5teHFldHF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjEzMzA4OTYsImV4cCI6MjAzNjkwNjg5Nn0.Yl2Z1kElE1q5Jlrxkk2IDfwKiyY6otUx9hivV1XtlY0";
-const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = "https://rjyjsnetkrqvksvphnhz.supabase.co";
+const supabase = supabaseClient.createClient(
+  supabaseUrl,
+  process.env.SUPABASE_KEY,
+);
 
 // Get endpoints
 app.get("/", (req, res) => {
