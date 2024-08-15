@@ -33,3 +33,24 @@ Installation via Node Version Manager automatically installs Node Package Manage
 
 ## Demo
 
+### Home Page
+![Screenshot of the website homepage](https://github.com/enguyen17/INST490-Lakeland/blob/main/images/welcomepage.png)
+
+### Advanced Search
+![Screenshot of advanced search bar](https://github.com/enguyen17/INST490-Lakeland/blob/main/images/advancedsearch1.png)
+![Screenshot of advanced search bar with value inputted](https://github.com/enguyen17/INST490-Lakeland/blob/main/images/advancedsearch2.png)
+
+### Filtered Results
+![Screenshot of filtered results](https://github.com/enguyen17/INST490-Lakeland/blob/main/images/filtered1.png)
+![Screenshot of filtered results cont.](https://github.com/enguyen17/INST490-Lakeland/blob/main/images/filtered2.png)
+
+### Explore Datasets Page
+![Screenshot of dataset overview page](https://github.com/enguyen17/INST490-Lakeland/blob/main/images/exploredata.png)
+![Screenshot of 1900 dataset](https://github.com/enguyen17/INST490-Lakeland/blob/main/images/1900explore.png)
+
+### About Us Page
+![Screenshot of about us page](https://github.com/enguyen17/INST490-Lakeland/blob/main/images/aboutus.png)
+
+### Tutorial Page
+![Screenshot of about us page](https://github.com/enguyen17/INST490-Lakeland/blob/main/images/tutorial.png)
+
