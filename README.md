@@ -23,6 +23,8 @@ Installation via Node Version Manager automatically installs Node Package Manage
 - Body-parser
 - Suapbase
 - Tailwind
+- Data Tables Javascript Library
+- Bootstrap
 
 ## Installation
 
